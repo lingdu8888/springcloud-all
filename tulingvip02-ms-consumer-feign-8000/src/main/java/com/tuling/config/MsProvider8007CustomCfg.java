@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * Created by smlz on 2019/4/10.
  */
+
 public class MsProvider8007CustomCfg {
 
     @Bean

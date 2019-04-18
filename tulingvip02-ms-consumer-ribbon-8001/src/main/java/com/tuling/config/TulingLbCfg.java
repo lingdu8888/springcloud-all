@@ -1,5 +1,6 @@
 package com.tuling.config;
 
+import com.netflix.loadbalancer.IRule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class TulingLbCfg {
 
     @Bean
-    public TulingRandomRule tulingRandomRule() {
+    public IRule tulingRandomRule() {
         return new TulingRandomRule();
     }
+
 }

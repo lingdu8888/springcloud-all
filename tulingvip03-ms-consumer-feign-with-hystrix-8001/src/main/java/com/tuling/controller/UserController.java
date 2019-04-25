@@ -37,13 +37,13 @@ public class UserController {
 
     @RequestMapping("/queryUserInfoById/{userId}")
     public UserInfoVo queryUserInfoById(@PathVariable("userId") Integer userId) {
-        User user = userServiceImpl.queryUserById(userId);
+        //User user = userServiceImpl.queryUserById(userId);
 
         List<OrderVo> voList = orderApi.queryOrdersByUserId(userId);
 
         UserInfoVo userInfoVo = new UserInfoVo();
         userInfoVo.setOrderVoList(voList);
-        userInfoVo.setUserName(user.getUserName());
+        userInfoVo.setUserName("张三");
         return userInfoVo;
     }
 

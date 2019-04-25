@@ -31,6 +31,18 @@ public class MsCustomFeignOrderApiFallBackFactory implements FallbackFactory<MsC
                 orderVoList.add(orderVo);
                 return orderVoList;
             }
+
+            @Override
+            public List<OrderVo> queryAll() {
+                log.info("queryAll的降级方法");
+                List<OrderVo> orderVoList = new ArrayList<>();
+                OrderVo orderVo = new OrderVo();
+                orderVo.setUserId(-1);
+                orderVo.setOrderId(-1);
+
+                orderVoList.add(orderVo);
+                return orderVoList;
+            }
         };
     }
 }

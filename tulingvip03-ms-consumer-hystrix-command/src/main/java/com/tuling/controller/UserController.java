@@ -1,6 +1,7 @@
 package com.tuling.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.tuling.compent.TulingHystrixCommand;
 import com.tuling.entity.OrderVo;
 import com.tuling.entity.User;
 import com.tuling.entity.UserInfoVo;
@@ -32,30 +33,31 @@ public class UserController {
     /**
      * 通过hystrix命令模式 来进行调用
      * @param userId
-     * @return
-
-    @RequestMapping("/queryUserInfo/{userId}")
-    public UserInfoVo queryUserInfo(@PathVariable("userId") Integer userId) {
-
-        User user = userServiceImpl.queryUserById(userId);
-
-        //构建调用命令模式
-        TulingHystrixCommand tulingHystrixCommand = new TulingHystrixCommand("orderGroupKey",restTemplate,userId);
-        List<OrderVo> orderVoList =tulingHystrixCommand.execute();
-
-        UserInfoVo userInfoVo = new UserInfoVo();
-        userInfoVo.setOrderVoList(orderVoList);
-        userInfoVo.setUserName(user.getUserName());
-
-        return userInfoVo;
-    }
      */
+/*     @RequestMapping("/queryUserInfo/{userId}")
+     public UserInfoVo queryUserInfo(@PathVariable("userId") Integer userId) {
+
+     User user = userServiceImpl.queryUserById(userId);
+
+     //构建调用命令模式
+     TulingHystrixCommand tulingHystrixCommand = new TulingHystrixCommand("orderGroupKey",restTemplate,userId);
+     List<OrderVo> orderVoList =tulingHystrixCommand.execute();
+
+     UserInfoVo userInfoVo = new UserInfoVo();
+     userInfoVo.setOrderVoList(orderVoList);
+     userInfoVo.setUserName(user.getUserName());
+
+     return userInfoVo;
+     }*/
+
+
 
     /**
      * 通过命令来指定降级方法
      * @param userId 用户ID
      * @return
      */
+
     @HystrixCommand(fallbackMethod ="queryUserInfoFallBack")
     @RequestMapping("/queryUserInfo/{userId}")
     public UserInfoVo queryUserInfo(@PathVariable("userId") Integer userId) {

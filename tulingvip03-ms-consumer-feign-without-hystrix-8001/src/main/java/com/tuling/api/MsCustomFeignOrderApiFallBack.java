@@ -24,4 +24,9 @@ public class MsCustomFeignOrderApiFallBack implements MsCustomFeignOrderApi {
         orderVoList.add(orderVo);
         return orderVoList;
     }
+
+    @Override
+    public List<OrderVo> queryAll() {
+        return null;
+    }
 }

@@ -67,5 +67,15 @@ public class UserController {
         return userInfoVo;
     }
 
+    @RequestMapping("/queryUserInfoByWithoutCircuitBreaker")
+    public UserInfoVo queryUserInfoByWithoutCircuitBreaker(){
+        List<OrderVo> voList = msCustomFeignOrderApi.queryAll();
+
+        UserInfoVo userInfoVo = new UserInfoVo();
+        userInfoVo.setOrderVoList(voList);
+        userInfoVo.setUserName("测试降级用户");
+        return userInfoVo;
+    }
+
 
 }

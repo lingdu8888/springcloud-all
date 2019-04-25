@@ -29,6 +29,10 @@ public class TulingHystrixCommand extends HystrixCommand<List<OrderVo>> {
         return orderVoList;
     }
 
+    /**
+     * 降级方法(回退)
+     * @return
+     */
     @Override
     protected List<OrderVo> getFallback() {
         log.info("触发降级方法========================>");

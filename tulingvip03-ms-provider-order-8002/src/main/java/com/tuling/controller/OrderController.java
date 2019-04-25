@@ -32,10 +32,8 @@ public class OrderController {
         log.info("测试降级。。。。。。。");
 
         //超时降级
-        Thread.sleep(3000);
-/*        if(userId == 2) {
-            throw new RuntimeException("不存在的用户");
-        }*/
+        //Thread.sleep(4000);
+
 
         List<OrderVo> list = new ArrayList<>();
         OrderVo orderVo = new OrderVo();
@@ -48,6 +46,28 @@ public class OrderController {
 
         //return orderServiceImpl.queryOrdersByUserId(userId);
     }
+
+    @RequestMapping("/queryAll")
+    public List<OrderVo> queryAll() throws InterruptedException {
+
+        //超时降级
+        //Thread.sleep(4000);
+        if(true) {
+            throw new RuntimeException("不存在的用户");
+        }
+
+        List<OrderVo> list = new ArrayList<>();
+        OrderVo orderVo = new OrderVo();
+        orderVo.setUserId(1);
+        orderVo.setOrderId(1);
+        orderVo.setOrderMoney(new BigDecimal(200));
+        orderVo.setDbSource("tuling_source01");
+        list.add(orderVo);
+        return list;
+
+    }
+
+
 
     @RequestMapping("/getRegisterInfo")
     public String info() {

@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * Created by smlz on 2019/4/10.
  */
-//@FeignClient(name = "MS-PROVIDER-ORDER",fallback =MsCustomFeignOrderApiFallBack.class ,path = "/order")
-@FeignClient(name = "MS-PROVIDER-ORDER",fallbackFactory =MsCustomFeignOrderApiFallBackFactory.class ,path = "/order")
+@FeignClient(name = "MS-PROVIDER-ORDER",fallback =MsCustomFeignOrderApiFallBack.class ,path = "/order")
+//@FeignClient(name = "MS-PROVIDER-ORDER",fallbackFactory =MsCustomFeignOrderApiFallBackFactory.class ,path = "/order")
 public interface MsCustomFeignOrderApi {
 
     @RequestMapping("/queryOrdersByUserId/{userId}")

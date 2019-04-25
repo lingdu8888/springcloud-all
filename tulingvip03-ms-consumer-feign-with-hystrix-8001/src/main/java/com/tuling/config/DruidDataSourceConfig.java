@@ -3,6 +3,7 @@ package com.tuling.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -66,5 +67,16 @@ public class DruidDataSourceConfig {
         initParams.put("exclusions","*.js,*.css,/druid/*");
         filterRegistrationBean.setInitParameters(initParams);
         return  filterRegistrationBean;
+    }
+
+    @Bean
+    public ServletRegistrationBean getServlet(){
+
+        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        registrationBean.setLoadOnStartup(1);  //系统启动时加载顺序
+        registrationBean.addUrlMappings("/actuator/hystrix.stream");//路径
+        registrationBean.setName("HystrixMetricsStreamServlet");
+        return registrationBean;
     }
 }

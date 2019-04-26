@@ -12,6 +12,9 @@ eureka:
 
 turbine:
   aggregator:
-    clusterConfig: default
+    clusterConfig: ms-consumer-ribbon-user,ms-consumer-feign-user
   appConfig: ms-consumer-ribbon-user,ms-consumer-feign-user
   cluster-name-expression: "'default'"
+  instanceUrlSuffix:
+      ms-consumer-ribbon-user: 你的context-path/actuator/hystrix.strea
+

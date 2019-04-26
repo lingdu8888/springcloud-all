@@ -23,8 +23,8 @@ public class TulingZuulFallBack implements FallbackProvider{
          *      *表示为所有微服务提供回退
          *      "微服务实例名称  指定为哪个微服务回退"
          */
-        //return "*";
-        return "ms-provider-order";
+        return "*";
+        //return "ms-provider-order";
     }
 
     @Override

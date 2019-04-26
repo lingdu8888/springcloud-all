@@ -12,4 +12,6 @@ public class Tulingvip04MsGatewayZuulApplication {
 		SpringApplication.run(Tulingvip04MsGatewayZuulApplication.class, args);
 	}
 
+
+
 }

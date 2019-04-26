@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * 自定义的zuul的过滤器
  * Created by smlz on 2019/4/23.
  */
-@Component
+//@Component
 public class TulingPreFilter extends ZuulFilter {
 
     /**
@@ -53,16 +53,16 @@ public class TulingPreFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         Cookie[] cookies = request.getCookies();
-        if(cookies==null || cookies.length==0) {
+        if(cookies==null || cookies.length==0) {//不进行路由
             shouldNotFilter(ctx);
             return null;
         }else {
-            //不进行路由
+
             ctx.setSendZuulResponse(true);
             //设置返回码
             ctx.setResponseStatusCode(200);
 
-            ctx.set("isSuccess",false);
+            ctx.set("isSuccess",true);
 
             return null;
         }

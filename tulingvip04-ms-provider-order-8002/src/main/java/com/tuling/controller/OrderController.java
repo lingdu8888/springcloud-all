@@ -1,5 +1,6 @@
 package com.tuling.controller;
 
+import com.netflix.hystrix.exception.HystrixRuntimeException;
 import com.tuling.entity.OrderVo;
 import com.tuling.service.OrderServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -39,10 +40,11 @@ public class OrderController {
         log.info("测试降级。。。。。。。");
 
         //超时降级
-        Thread.sleep(3000);
-/*        if(userId==2) {
-            throw new RuntimeException("异常");
-        }*/
+        //Thread.sleep(3000);
+        if(userId==2) {
+            //throw new HystrixRuntimeException(HystrixRuntimeException.FailureType.BAD_REQUEST_EXCEPTION,null,"错误信息",null,null);
+            throw new RuntimeException("用户不存在");
+        }
 
         List<OrderVo> list = new ArrayList<>();
         OrderVo orderVo = new OrderVo();

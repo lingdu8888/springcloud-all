@@ -10,4 +10,3 @@ spring:
           uri: http://git.jiagouedu.com/java-vip/tuling-vip-cloud-config.git
           username: sima
           password: 123456
-

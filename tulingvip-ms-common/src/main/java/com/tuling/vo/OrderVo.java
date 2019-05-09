@@ -1,4 +1,4 @@
-package com.tuling.entity;
+package com.tuling.vo;
 
 import lombok.Data;
 
